@@ -4,11 +4,14 @@
 
 <body>
   <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
 </body>
 
 <template name="hello">
   <button>Click Me</button>
   <p>You've pressed the button {{counter}} times.</p>
+  <p>{{this_params}}</p>
+</template>
+
+<template name="register">
+    <h2>Register</h2>
 </template>

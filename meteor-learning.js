@@ -1,7 +1,7 @@
 Counters = new Mongo.Collection("counters")
 
-function counter() {
-    return Counters.findOne({_id: "semsket"}).a;
+function counter(_id) {
+    return Counters.findOne({_id: _id}).a;
 }
 
 function updateCounter() {
@@ -17,13 +17,16 @@ function initCounter() {
     }
 }
 
+Router.route('/:_id', {
+    template: 'hello',
+    data: function() {
+        return { counter: counter(this.params._id) };
+    }
+});
+
 if (Meteor.isClient) {
   // counter starts at 0
   // Session.setDefault('counter', 0);
-
-    Template.hello.helpers({
-      counter: counter
-    });
 
     Template.hello.events({
         // increment the counter when button is clicked       
